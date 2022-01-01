@@ -12,9 +12,6 @@
     = render "layouts/navbar"
     = yield :navbar
     .container.p-3
-      - if notice
-        %p.notice.alert.alert-success= notice
-      - elsif alert
-        %p.alert.alert.alert-danger= alert
+      = render "layouts/messages"
       = yield
     = render 'layouts/footer'

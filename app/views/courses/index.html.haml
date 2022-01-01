@@ -1,5 +1,5 @@
 %h1 Your courses
-%button.btn.btn-success.mb-3{"data-container" => "body", "data-content" => "Your Courses", "data-placement" => "right", "data-toggle" => "popover", :type => "button"}
+%button.btn.btn-success.mb-3{"data-container" => "body", "data-content" => "Your Courses", "data-placement" => "right", "data-toggle" => "popover", "data-trigger" => "focus", :type => "button"}
   Total Course : 
   %span.badge.badge-light= @courses.count
 - unless @courses.any?
