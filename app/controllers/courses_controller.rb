@@ -3,7 +3,11 @@ class CoursesController < ApplicationController
 
   # GET /courses or /courses.json
   def index
-    @courses = current_user.courses.all.with_rich_text_description.order(updated_at: :desc)
+    if params[:title]
+      @courses = current_user.courses.where("title ILIKE ?", "%#{params[:title]}%").with_rich_text_description.order(updated_at: :desc)
+    else
+      @courses = current_user.courses.all.with_rich_text_description.order(updated_at: :desc)
+    end
   end
 
   # GET /courses/1 or /courses/1.json

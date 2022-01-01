@@ -1,28 +1,29 @@
 - content_for :navbar do  
-  %nav.navbar.sticky-top.navbar-expand-md.navbar-light.bg-light
+  %nav.navbar.sticky-top.navbar-expand-lg.navbar-light.bg-light
     .container
-      %a.navbar-brand{:href => "#"} Navbar
+      %a.navbar-brand{:href => "#"} RubyGems
       %button.navbar-toggler{"aria-controls" => "navbarNavDropdown", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNavDropdown", "data-toggle" => "collapse", :type => "button"}
         %span.navbar-toggler-icon
-      #navbarNavDropdown.collapse.navbar-collapse
-        %ul.navbar-nav
-          %li.nav-item.active
-            %a.nav-link{:href => "#"}
-              Home
-              %span.sr-only (current)
-          %li.nav-item
-            = link_to root_path, class: "nav-link" do
-              Features
-          %li.nav-item
-            %a.nav-link{:href => "#"} Pricing
-          - if user_signed_in?
-            %li.nav-item.dropdown
-              %a#navbarDropdownMenuLink.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-                = current_user.email
-              .dropdown-menu{"aria-labelledby" => "navbarDropdownMenuLink"}
-                = link_to edit_user_registration_path, :method => :delete, class: "dropdown-item" do
-                  %span.fas.fa-cog
-                  Account Settings 
-                = link_to destroy_user_session_path, :method => :delete, class: "dropdown-item" do
-                  %span.fas.fa-sign-out-alt
-                  Logout 
+      - if user_signed_in?
+        #navbarNavDropdown.collapse.navbar-collapse
+          %ul.navbar-nav.mr-auto
+            %li.nav-item{class: "#{'active font-weight-bold' if current_page?(root_path)}"}
+              = link_to user_root_path, class: "nav-link" do
+                Home
+                %span.sr-only (current)
+              %li.nav-item{class: "#{'active font-weight-bold' if current_page?(courses_path)}"}
+                = link_to courses_path, class: "nav-link" do
+                  Courses
+              %li.nav-item.dropdown{class: "#{'active font-weight-bold' if current_page?(edit_user_registration_path)}"}
+                %a#navbarDropdownMenuLink.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                  = current_user.email
+                .dropdown-menu{"aria-labelledby" => "navbarDropdownMenuLink"}
+                  = link_to edit_user_registration_path, class: "dropdown-item" do
+                    %span.fa.fa-cog
+                    Account Settings 
+                  = link_to destroy_user_session_path, :method => :delete, class: "dropdown-item" do
+                    %span.fas.fa-sign-out-alt
+                    Logout 
+          = form_tag courses_path, method: :get, class: "form-inline my-2 my-lg-0" do
+            = text_field_tag :title, params[:title], {"aria-label" => "Search", :placeholder => "Find Your Courses", :type => "search", :class => "form-control mr-sm-2"}
+            %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Search
