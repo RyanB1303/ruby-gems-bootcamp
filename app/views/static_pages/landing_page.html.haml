@@ -15,7 +15,8 @@
               %h1.hero-title.mt-0 Landing template for startups
               %p.hero-paragraph Our landing page template works on all devices, so you only have to set it up once, and get beautiful results forever.
               .hero-cta
-                %a.button.button-primary{:href => "#"} Pre order now
+                = link_to new_course_path, class: "button" do 
+                  New Courses
                 %a.button{:href => "#"} Get in touch
             .hero-figure.anime-element
               %svg.placeholder{:height => "396", :viewbox => "0 0 528 396", :width => "528"}
@@ -96,7 +97,9 @@
                       %li
                         %span Lorem ipsum dolor sit nisi
                   .pricing-table-cta.mb-8
-                    %a.button.button-primary.button-shadow.button-block{:href => "#"} Pre order now
+                    = link_to new_course_path, class: "button button-primary button-shadow button-block" do 
+                      New Courses
+                    %end
       %section.cta.section
         .container
           .cta-inner.section-inner
