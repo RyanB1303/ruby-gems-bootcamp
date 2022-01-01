@@ -7,6 +7,7 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import "./sweetalert"
 
 Rails.start()
 Turbolinks.start()
@@ -18,3 +19,11 @@ import '@fortawesome/fontawesome-free/css/all'
 
 require("trix")
 require("@rails/actiontext")
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})

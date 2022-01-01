@@ -13,7 +13,7 @@
     = yield :navbar
     .container.p-3
       - if notice
-        %p.notice.alert.alert-secondary= notice
+        %p.notice.alert.alert-success= notice
       - elsif alert
         %p.alert.alert.alert-danger= alert
       = yield
