@@ -1,0 +1,16 @@
+!!!
+%html.no-js{:lang => "en"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %title RubyGemsBootcamp
+    %link{:href => "https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600", :rel => "stylesheet"}/
+    = javascript_include_tag '/dist/js/anime.min.js'
+    = javascript_include_tag '/dist/js/scrollreveal.min.js'
+    = stylesheet_link_tag '/dist/css/style.css'
+  %body.is-boxed.has-animations
+    .body-wrap
+      = yield
+      = javascript_include_tag '/dist/js/main.min.js'
