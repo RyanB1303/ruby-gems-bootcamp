@@ -1,5 +1,7 @@
-%h1 Listing courses
-
+%h1 Your courses
+%button.btn.btn-success.mb-3 
+  Total Course : 
+  %span.badge.badge-light= @courses.count
 %table.table
   %thead
     %tr

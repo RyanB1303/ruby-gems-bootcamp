@@ -15,9 +15,12 @@
               %h1.hero-title.mt-0 Landing template for startups
               %p.hero-paragraph Our landing page template works on all devices, so you only have to set it up once, and get beautiful results forever.
               .hero-cta
-                = link_to new_course_path, class: "button" do 
-                  New Courses
-                %a.button{:href => "#"} Get in touch
+                = link_to new_user_session_path, class: "button" do 
+                  Go to your account
+                Or
+                &nbsp;
+                = link_to new_user_registration_path, class: "button" do
+                  Become Our Member
             .hero-figure.anime-element
               %svg.placeholder{:height => "396", :viewbox => "0 0 528 396", :width => "528"}
                 %rect{:height => "396", :style => "fill:transparent;", :width => "528"}

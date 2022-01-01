@@ -14,10 +14,14 @@
             %a.nav-link{:href => "#"} Features
           %li.nav-item
             %a.nav-link{:href => "#"} Pricing
-          %li.nav-item.dropdown
-            %a#navbarDropdownMenuLink.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-              Dropdown link
-            .dropdown-menu{"aria-labelledby" => "navbarDropdownMenuLink"}
-              %a.dropdown-item{:href => "#"} Action
-              %a.dropdown-item{:href => "#"} Another action
-              %a.dropdown-item{:href => "#"} Something else here
+          - if user_signed_in?
+            %li.nav-item.dropdown
+              %a#navbarDropdownMenuLink.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                = current_user.email
+              .dropdown-menu{"aria-labelledby" => "navbarDropdownMenuLink"}
+                = link_to edit_user_registration_path, :method => :delete, class: "dropdown-item" do
+                  %span.fas.fa-cog
+                  Account Settings 
+                = link_to destroy_user_session_path, :method => :delete, class: "dropdown-item" do
+                  %span.fas.fa-sign-out-alt
+                  Logout 
