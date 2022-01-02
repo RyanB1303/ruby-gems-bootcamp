@@ -2,6 +2,10 @@
 %button.btn.btn-success.mb-3{"data-container" => "body", "data-content" => "Your Courses", "data-placement" => "right", "data-toggle" => "popover", "data-trigger" => "focus", :type => "button"}
   Total Course : 
   %span.badge.badge-light= @courses.count
+= link_to new_course_path, class: "btn btn-primary mb-3 float-right" do
+  %span.fa.fa-plus
+  Add New Course
+
 - unless @courses.any?
   .card 
     .card-header.text-center.alert.alert-secondary
@@ -10,26 +14,9 @@
       You don't have any courses, buy one 
       = link_to 'Here', new_course_path
 - else 
-  %table.table
-    %thead
-      %tr
-        %th Title
-        %th Description
-        %th Description
-        %th User
-        %th
-        %th
-        %th
-
-    %tbody
-      - @courses.each do |course|
-        %tr
-          %td= course.title
-          %td= truncate(strip_tags(course.description.to_s), length: 50)
-          %td= course.user.email
-          %td= link_to 'Show', course
-          %td= link_to 'Edit', edit_course_path(course)
-          %td= link_to 'Destroy', course, method: :delete, data: { confirm_swal: "Are you sure want to delete #{course.title} ?" }
+  .card-deck 
+    - @courses.each do |course|
+      = render 'courses/course', course: course
 
 %br
 

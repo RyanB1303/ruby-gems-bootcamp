@@ -1,13 +1,15 @@
 - content_for :navbar do  
   %nav.navbar.sticky-top.navbar-expand-lg.navbar-light.bg-light
     .container
-      %a.navbar-brand{:href => "#"} RubyGems
+      = link_to user_signed_in? ? user_root_path : root_path, class: "navbar-brand" do
+        %span.fa.fa-gem 
+        RubyGems
       %button.navbar-toggler{"aria-controls" => "navbarNavDropdown", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNavDropdown", "data-toggle" => "collapse", :type => "button"}
         %span.navbar-toggler-icon
       - if user_signed_in?
         #navbarNavDropdown.collapse.navbar-collapse
           %ul.navbar-nav.mr-auto
-            %li.nav-item{class: "#{'active font-weight-bold' if current_page?(root_path)}"}
+            %li.nav-item{class: "#{'active font-weight-bold' if current_page?(user_root_path)}"}
               = link_to user_root_path, class: "nav-link" do
                 Home
                 %span.sr-only (current)
