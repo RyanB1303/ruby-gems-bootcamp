@@ -14,7 +14,7 @@
       You don't have any courses, buy one 
       = link_to 'Here', new_course_path
 - else 
-  .card-deck 
+  .card-columns 
     - @courses.each do |course|
       = render 'courses/course', course: course
 
