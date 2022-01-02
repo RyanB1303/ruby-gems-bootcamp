@@ -1,7 +1,8 @@
 = link_to courses_path do
   %i.fas.fa-long-arrow-alt-left
-
-%h2.my-3 New course
-
-= render 'form'
+.card 
+  .card-header  
+    %h2.my-3 New course
+  .card-body 
+    = render 'form'
 

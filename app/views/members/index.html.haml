@@ -4,6 +4,38 @@
   %hr.my-4/
   %p It uses utility classes for typography and spacing to space content out within the larger container.
   %a.btn.btn-primary.btn-lg{:href => "#", :role => "button"} Learn more
+  
+.card-group
+  .card.card-body
+    %h1
+      .fa.fa-graduation-cap
+    = Course.count
+    online courses
+    .row
+    Explore a variety of fresh topics
+  .card.card-body
+    %h1
+      .fa.fa-chalkboard-teacher
+      /.fa.fa-brain
+    = Course.distinct.count(:user_id)
+    expert instructors
+    .row
+    Find the right instructor for you
+  .card.card-body
+    %h1
+      .fa.fa-user-graduate
+    = User.count
+    active learners
+    .row
+    Join the knowledge sharing community
+  .card.card-body
+    %h1
+      .fa.fa-infinity
+    Lifetime access
+    .row
+    Learn on your schedule
+
+
 %h3.mt-3 Popular Courses
 .card-deck
   - @courses.each do |course|
