@@ -25,7 +25,10 @@
                     Account Settings 
                   = link_to destroy_user_session_path, :method => :delete, class: "dropdown-item" do
                     %span.fas.fa-sign-out-alt
-                    Logout 
+                    Logout
+              %li.nav-item{class: "#{'active font-weight-bold' if current_page?(members_path)}"}
+                = link_to members_path, class: "nav-link" do
+                  All Members
           = form_tag courses_path, method: :get, class: "form-inline my-2 my-lg-0" do
             = text_field_tag :title, params[:title], {"aria-label" => "Search", :placeholder => "Find Your Courses", :type => "search", :class => "form-control mr-sm-2"}
             %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Search
